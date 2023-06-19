@@ -13,7 +13,9 @@ const EventCard = () => {
         <h2 className="card-title">Shoes!</h2>
         <p>If a dog chews shoes whose shoes does he choose?</p>
         <div className="card-actions justify-end">
-          <button className="btn w-full btn-sm rounded bg-black text-white font-bold">Book Now</button>
+          <button className="btn w-full btn-sm rounded bg-gradient-to-tl to-blue-400 from-blue-700 text-white font-bold">
+            Book Now
+          </button>
         </div>
       </div>
     </div>

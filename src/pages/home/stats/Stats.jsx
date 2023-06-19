@@ -1,46 +1,65 @@
-import React, { useEffect } from 'react';
+import { useState } from 'react';
+import CountUp from 'react-countup';
+import { FaAward, FaCalendarAlt, FaLandmark, FaUser } from 'react-icons/fa';
+import ScrollTrigger from 'react-scroll-trigger';
 
-const Counter = ({ icon, target, label }) => {
-  useEffect(() => {
-    const countElement = document.querySelector(`[data-target="${target}"]`);
-    const duration = 2000;
-    const increment = Math.ceil(target / duration * 50);
-    let count = 0;
-
-    const updateCount = () => {
-      count += increment;
-
-      if (count >= target) {
-        countElement.textContent = target;
-      } else {
-        countElement.textContent = count;
-        setTimeout(updateCount, 50);
-      }
-    };
-
-    updateCount();
-  }, [target]);
+const Stats = () => {
+  const [counterOn, setCounterOn] = useState(false);
 
   return (
-    <div className="flex items-center">
-      <img src={icon} alt={label} className="w-8 h-8 mr-2" />
-      <h3 data-target={target} className="text-3xl font-bold count">0</h3>
-      <h6 className="ml-2 text-sm">{label}</h6>
-    </div>
-  );
-};
+    <section className="w-[70%] mx-auto mt-20">
+      <h1 className="font-bold text-3xl border-l-8 border-blue-500 pl-2 my-5">
+        Event Stats
+      </h1>
 
-const AutoCounter = () => {
-  return (
-    <div className="container mx-auto mt-20">
-      <div className="text-2xl font-bold mb-4 text-center uppercase">Our Statistics</div>
-      <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
-        <Counter icon="./icons/iconmonstr-time-19.svg" target={15000} label="Work Hours" />
-        <Counter icon="./icons/iconmonstr-coffee-11.svg" target={1200} label="Cups of Coffee" />
-        <Counter icon="./icons/iconmonstr-weather-112.svg" target={500} label="Sleepless Nights" />
+      <div className="flex justify-around text-white font-bold text-4xl bg-gradient-to-l to-blue-600 from-cyan-400 py-10 px-5 rounded-sm">
+        <div className="flex gap-2 items-center">
+          <span>
+            <FaUser />
+          </span>
+          <ScrollTrigger
+            onEnter={() => setCounterOn(true)}
+            onExit={() => setCounterOn(false)}
+          >
+            {counterOn && <CountUp start={2000} end={5500} />}
+          </ScrollTrigger>
+        </div>
+        <div className="flex gap-2 items-center">
+          <span>
+            <FaCalendarAlt />
+          </span>
+          <ScrollTrigger
+            onEnter={() => setCounterOn(true)}
+            onExit={() => setCounterOn(false)}
+          >
+            {counterOn && <CountUp start={400} end={800} />}
+          </ScrollTrigger>
+        </div>
+        <div className="flex gap-2 items-center">
+          <span>
+            <FaLandmark />
+          </span>
+          <ScrollTrigger
+            onEnter={() => setCounterOn(true)}
+            onExit={() => setCounterOn(false)}
+          >
+            {counterOn && <CountUp start={100} end={250} />}
+          </ScrollTrigger>
+        </div>
+        <div className="flex gap-2 items-center">
+          <span>
+            <FaAward />
+          </span>
+          <ScrollTrigger
+            onEnter={() => setCounterOn(true)}
+            onExit={() => setCounterOn(false)}
+          >
+            {counterOn && <CountUp start={20} end={70} />}
+          </ScrollTrigger>
+        </div>
       </div>
-    </div>
+    </section>
   );
 };
 
-export default AutoCounter;
+export default Stats;
