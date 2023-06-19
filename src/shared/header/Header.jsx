@@ -32,7 +32,7 @@ const Header = () => {
           </label>
           <div
             tabIndex={0}
-            className="dropdown-content card card-compact w-64 shadow-lg bg-white text-base-content z-10 rounded-sm"
+            className="dropdown-content card card-compact w-64 shadow-lg bg-white text-base-content z-50 rounded-sm"
           >
             <div className="card-body p-0">
               <ul className="flex flex-col divide-y-2">
